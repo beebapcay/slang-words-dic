@@ -1,0 +1,2 @@
+# SlangWords
+ SLANG WORDS DICTIONARY
