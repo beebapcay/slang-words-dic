@@ -14,7 +14,7 @@ public class SlangDictionary {
         m_slangDic = new HashMap<String, ArrayList<String>>();
     }
 
-    public void loadData(String file_name) {
+    public void loadSlangWordData(String file_name) {
         SlangFileHandling.readFromFile(file_name, m_slangDic);
     }
 
@@ -47,5 +47,15 @@ public class SlangDictionary {
         System.out.println("FOUND " + slangWords.size() + " SLANG WORDS FOR " + key + " KEY WORDS DEFINITION");
         for (String slangWord : slangWords)
             System.out.println("\t" + slangWord);
+    }
+
+    //Option 03: Show History slangWord Search
+    public void recordHistory(String file_name, String data) {
+        FileHandling.writeToFileAppend(file_name, data);
+    }
+
+    public void showHistory(String file_name) {
+        System.out.println("THERE ARE HISTORIES SLANG WORD WERE SEARCHED");
+        FileHandling.readFromFile(file_name);
     }
 }

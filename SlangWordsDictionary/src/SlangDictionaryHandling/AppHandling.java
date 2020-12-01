@@ -11,12 +11,14 @@ public class AppHandling {
 
         SlangDictionary slangDic = new SlangDictionary();
         String file_name = "resources/slang.txt";
-        slangDic.loadData(file_name);
+        slangDic.loadSlangWordData(file_name);
 
         Scanner myReader = new Scanner(System.in);
         String key= myReader.next();
         System.out.println(key);
 
         slangDic.searchDefinition(key);
+        slangDic.recordHistory("resources/history.txt", key);
+        slangDic.showHistory("resources/history.txt");
     }
 }
