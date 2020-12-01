@@ -1,7 +1,9 @@
 package SlangDictionaryHandling;
 
-import java.util.HashMap; // Import the HashMap for store SlangWord - Definition
-import java.util.ArrayList; // Import the ArrayList for Definition of SlangWord
+import java.util.HashMap;
+import java.util.ArrayList;
+
+import FileHandling.*;
 
 
 public class SlangDictionary {
@@ -11,5 +13,10 @@ public class SlangDictionary {
     public SlangDictionary() {
         m_slangDic = new HashMap<String, ArrayList<String>>();
     }
+
+    public void loadData(String file_name) {
+        SlangFileHandling.readFromFile(file_name, m_slangDic);
+    }
+
 
 }
