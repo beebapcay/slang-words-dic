@@ -39,6 +39,7 @@ public class FileHandling {
         try {
             FileWriter fileObj = new FileWriter(file_name);
             fileObj.write(data);
+            fileObj.write("\n");
             fileObj.close();
             System.out.println("Successfully wrote to the file");
         } catch (IOException e) {
@@ -47,7 +48,20 @@ public class FileHandling {
         }
     }
 
-    public static void readToFile(String file_name) {
+    public static void writeToFileAppend(String file_name, String data) {
+        try {
+            FileWriter fileObj = new FileWriter(file_name, true);
+            fileObj.write(data);
+            fileObj.write("\n");
+            fileObj.close();
+            System.out.println("Successfully wrote to the file");
+        } catch (IOException e) {
+            System.out.println("An error occurred");
+            e.printStackTrace();
+        }
+    }
+
+    public static void readFromFile(String file_name) {
         try {
             File fileObj = new File(file_name);
             Scanner myReader = new Scanner(fileObj);
@@ -60,5 +74,13 @@ public class FileHandling {
             System.out.println("An error occurred");
             e.printStackTrace();
         }
+    }
+
+    public static void deleteFile(String file_name) {
+        File fileObj = new File(file_name);
+        if (fileObj.delete())
+            System.out.println("Successfully deleted the file");
+        else
+            System.out.println("An error occurred");
     }
 }
