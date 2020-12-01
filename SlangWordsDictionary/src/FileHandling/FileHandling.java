@@ -13,11 +13,11 @@ public class FileHandling {
         try {
             File fileObj = new File(file_name);
             if (fileObj.createNewFile())
-                System.out.println("File created: " + fileObj.getName());
+                System.out.println("FILE CREATED: " + fileObj.getName());
             else
-                System.out.println("File: " + fileObj.getName() + " already exists");
+                System.out.println("FILE: " + fileObj.getName() + " ALREADY EXISTS");
         } catch (IOException e) {
-            System.out.println("An error occurred");
+            System.out.println("AN ERROR OCCURRED");
             e.printStackTrace();
         }
     }
@@ -41,9 +41,9 @@ public class FileHandling {
             fileObj.write(data);
             fileObj.write("\n");
             fileObj.close();
-            System.out.println("Successfully wrote to the file");
+            //System.out.println("SUCCESSFULLY WROTE TO THE FILE");
         } catch (IOException e) {
-            System.out.println("An error occurred");
+            System.out.println("AN ERROR OCCURRED");
             e.printStackTrace();
         }
     }
@@ -54,9 +54,9 @@ public class FileHandling {
             fileObj.write(data);
             fileObj.write("\n");
             fileObj.close();
-            System.out.println("Successfully wrote to the file");
+            //System.out.println("SUCCESSFULLY WROTE TO THE FILE");
         } catch (IOException e) {
-            System.out.println("An error occurred");
+            System.out.println("AN ERROR OCCURRED");
             e.printStackTrace();
         }
     }
@@ -71,7 +71,7 @@ public class FileHandling {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred");
+            System.out.println("AN ERROR OCCURRED");
             e.printStackTrace();
         }
     }
@@ -79,8 +79,9 @@ public class FileHandling {
     public static void deleteFile(String file_name) {
         File fileObj = new File(file_name);
         if (fileObj.delete())
-            System.out.println("Successfully deleted the file");
+            System.out.println("SUCCESSFULLY DELETED TO THE FILE");
         else
-            System.out.println("An error occurred");
+            System.out.println("AN ERROR OCCURRED");
     }
+
 }

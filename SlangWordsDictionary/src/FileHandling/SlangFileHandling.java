@@ -15,6 +15,7 @@ public class SlangFileHandling extends FileHandling{
         try {
             File fileObj = new File(file_name);
             Scanner myReader = new Scanner(fileObj);
+            String intro = myReader.nextLine();
             while (myReader.hasNextLine()) {
                 String line = myReader.nextLine();
                 StringBuilder newSlangWord = new StringBuilder("");
@@ -35,7 +36,7 @@ public class SlangFileHandling extends FileHandling{
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred");
+            System.out.println("AN ERROR OCCURRED");
             e.printStackTrace();
         }
     }

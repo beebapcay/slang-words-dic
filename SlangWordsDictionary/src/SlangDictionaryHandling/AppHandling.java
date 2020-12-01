@@ -13,12 +13,12 @@ public class AppHandling {
         String file_name = "resources/slang.txt";
         slangDic.loadSlangWordData(file_name);
 
+
         Scanner myReader = new Scanner(System.in);
-        String key= myReader.next();
-        System.out.println(key);
+
+        System.out.print("Input: ");
+        String key = myReader.next();
 
         slangDic.searchDefinition(key);
-        slangDic.recordHistory("resources/history.txt", key);
-        slangDic.showHistory("resources/history.txt");
     }
 }
