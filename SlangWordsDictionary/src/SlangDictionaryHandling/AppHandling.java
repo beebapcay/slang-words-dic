@@ -14,9 +14,9 @@ public class AppHandling {
         slangDic.loadData(file_name);
 
         Scanner myReader = new Scanner(System.in);
-        String slangWord = myReader.next();
-        System.out.println(slangWord);
+        String key= myReader.next();
+        System.out.println(key);
 
-        slangDic.searchDefinition(slangWord);
+        slangDic.searchDefinition(key);
     }
 }
