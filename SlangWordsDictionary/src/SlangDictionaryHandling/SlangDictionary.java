@@ -11,15 +11,18 @@ public class SlangDictionary {
 
     private HashMap<String, ArrayList<String>> m_slangDic;
     private String file_data;
+    private String file_original;
 
     public SlangDictionary() {
         m_slangDic = new HashMap<String, ArrayList<String>>();
         file_data = "";
+        file_original = "";
     }
 
-    public SlangDictionary(String file_data) {
+    public SlangDictionary(String file_data, String file_original) {
         m_slangDic = new HashMap<String, ArrayList<String>>();
         this.file_data = file_data;
+        this.file_original = file_original;
     }
 
     //Load slangDic From file_name
@@ -260,5 +263,13 @@ public class SlangDictionary {
             }
         }
         else System.out.println("DONT HAVE SLANG WORD " + slangWord + " ON DATABASE");
+    }
+
+    //Option 07: Reset To Original Database
+    public void resetToOriginalData() {
+        m_slangDic.clear();
+        SlangFileHandling.readFromFile(file_original, m_slangDic);
+        updateFileData();
+        System.out.println("SUCCESSFULLY RESET ORIGINAL DATABASE");
     }
 }

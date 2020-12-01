@@ -10,7 +10,8 @@ public class AppHandling {
     public static void main(String args[]) {
 
         String file_data = "resources/slang.txt";
-        SlangDictionary slangDic = new SlangDictionary(file_data);
+        String file_original  = "resources/slang-original.txt";
+        SlangDictionary slangDic = new SlangDictionary(file_data, file_original);
         slangDic.loadSlangWordData();
 
         Scanner myReader = new Scanner(System.in);
