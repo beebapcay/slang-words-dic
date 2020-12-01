@@ -1675,7 +1675,6 @@ KM`Keep Mum
 USA`United States of America
 KO`Knock Out| OK
 USC`University of Southern California
-#01`Number One
 KP`Korean Pride
 USB`Universal Serial Bus
 KR`Kind Regards

@@ -18,6 +18,6 @@ public class AppHandling {
         String key = myReader.next();
 
         slangDic.searchDefinition(key);
-
     }
+
 }

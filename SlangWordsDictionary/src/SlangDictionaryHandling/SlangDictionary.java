@@ -140,7 +140,6 @@ public class SlangDictionary {
                 String newSlangWord = myReader.nextLine();
                 System.out.print("CONFIRM TO CHANGE (Y / N):");
                 String confirm = myReader.nextLine();
-                System.out.println(confirm.toLowerCase());
                 if (confirm.equalsIgnoreCase("y") || confirm.equalsIgnoreCase("yes")) {
                     changeSlangWordKey(slangWord, newSlangWord);
                     updateFileData();
@@ -179,7 +178,9 @@ public class SlangDictionary {
                     }
                     else System.out.println("PLEASE INPUT Y / N");
                 }
-
+                else {
+                    System.out.println("INVALID INPUT");
+                }
             }
             else {
                 System.out.println("PLEASE PRESS ONLY 1 OR 2");
@@ -208,5 +209,56 @@ public class SlangDictionary {
         slangDefinitions.add(newSlangDefinition);
     }
 
-    
+    //Option 06: Delete slangWord
+    public void deleteSlangWord(String slangWord) {
+        if (m_slangDic.containsKey(slangWord)) {
+            ArrayList<String> slangDefinitions = m_slangDic.get(slangWord);
+            System.out.println("ORIGINAL SLANG WORD " + slangWord + " HAS " + slangDefinitions.size() + " MEANINGS");
+            for (int i = 0; i < slangDefinitions.size(); i++)
+                System.out.println((i + 1) + ".\t" + slangDefinitions.get(i));
+
+            System.out.println("PRESS 1: TO DELETE SLANG WORD");
+            System.out.println("PRESS 2: TO DELETE MEANING");
+            Scanner myReader = new Scanner(System.in);
+            int choose = myReader.nextInt();
+            myReader.nextLine();
+
+            if (choose == 1) {
+                System.out.print("CONFIRM TO DELETE (Y / N):");
+                String confirm = myReader.nextLine();
+                if (confirm.equalsIgnoreCase("y") || confirm.equalsIgnoreCase("yes")) {
+                    m_slangDic.remove(slangWord);
+                    updateFileData();
+                    System.out.println("SUCCESSFULLY DELETE SLANG WORD");
+                }
+                else System.out.println("PLEASE INPUT Y / N");
+            }
+            else if (choose == 2) {
+                if (slangDefinitions.size() == 1)
+                    System.out.println("PRESS 1 TO DELETE DEFINITION");
+                else System.out.println("PRESS FROM 1 TO " + slangDefinitions.size() + " TO DELETE DEFINITION");
+                int num = myReader.nextInt() - 1;
+                myReader.nextLine();
+                if (num < slangDefinitions.size()) {
+                    System.out.println("CONFIRM TO DELETE (Y / N):");
+                    String confirm = myReader.nextLine();
+                    if (confirm.equalsIgnoreCase("y") || confirm.equalsIgnoreCase("yes")) {
+                        slangDefinitions.remove(num);
+                        updateFileData();
+                        System.out.println("SUCCESSFULLY CHANGE SLANG DEFINITION");
+                    }
+                    else System.out.println("PLEASE INPUT Y / N");
+                }
+                else  {
+                    System.out.println("INVALID INPUT");
+                }
+            }
+            else {
+                System.out.println("PLEASE PRESS ONLY 1 OR 2");
+                deleteSlangWord(slangWord);
+                return;
+            }
+        }
+        else System.out.println("DONT HAVE SLANG WORD " + slangWord + " ON DATABASE");
+    }
 }
