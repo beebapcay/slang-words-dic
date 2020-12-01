@@ -3,6 +3,7 @@ package SlangDictionaryHandling;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 import FileHandling.*;
 
@@ -271,5 +272,18 @@ public class SlangDictionary {
         SlangFileHandling.readFromFile(file_original, m_slangDic);
         updateFileData();
         System.out.println("SUCCESSFULLY RESET ORIGINAL DATABASE");
+    }
+
+    //Option 08:
+    public void randomShowSlangWord() {
+        int randomInt = new Random().nextInt(m_slangDic.size());
+
+        Object slangWord = m_slangDic.keySet().toArray()[randomInt];
+        ArrayList<String> slangDefinitions = m_slangDic.get(slangWord);
+
+        System.out.println("SLANG WORD: " + slangWord);
+        System.out.println("THERE ARE " + slangDefinitions.size() + " MEANINGS OF THIS SLANG WORD");
+        for (int i = 0; i < slangDefinitions.size(); i++)
+            System.out.println((i + 1) + ".\t" + slangDefinitions.get(i));
     }
 }

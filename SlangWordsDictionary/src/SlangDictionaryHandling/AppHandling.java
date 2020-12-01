@@ -14,11 +14,11 @@ public class AppHandling {
         SlangDictionary slangDic = new SlangDictionary(file_data, file_original);
         slangDic.loadSlangWordData();
 
-        Scanner myReader = new Scanner(System.in);
-        System.out.print("Input: ");
-        String key = myReader.next();
+//        Scanner myReader = new Scanner(System.in);
+//        System.out.print("Input: ");
+//        String key = myReader.next();
 
-        slangDic.searchDefinition(key);
+        slangDic.randomShowSlangWord();
     }
 
 }
