@@ -34,9 +34,10 @@ public class AppHandling {
 
     public static void main(String args[]) {
         //Setup Data File
-        String file_data = "resources/slang.txt";
-        String file_original  = "resources/slang-original.txt";
-        String file_history = "resources/history.txt";
+        String resources_root = "resources/";
+        String file_data = "slang.txt";
+        String file_original  = "slang-original.txt";
+        String file_history = "history.txt";
 
         //Create And Load Data To SlangDictionary: slangDic
         SlangDictionary slangDic = new SlangDictionary(file_data, file_original, file_history);
@@ -73,6 +74,8 @@ public class AppHandling {
             switch (option) {
                 case 0:
                     System.out.println("\n** EXIT APPLICATION **\n");
+                    System.out.println("\nPRESS ENTER TO EXIT\n");
+                    myReader.nextLine();
                     con = false;
                     break;
                 case 1:
