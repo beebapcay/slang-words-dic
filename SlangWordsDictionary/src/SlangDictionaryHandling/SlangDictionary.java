@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Collections;
 
 import FileHandling.*;
 
@@ -274,16 +275,76 @@ public class SlangDictionary {
         System.out.println("SUCCESSFULLY RESET ORIGINAL DATABASE");
     }
 
-    //Option 08:
-    public void randomShowSlangWord() {
+    //Option 08: Show Random slangWord
+    public String getRandomSlangWord() {
         int randomInt = new Random().nextInt(m_slangDic.size());
 
         Object slangWord = m_slangDic.keySet().toArray()[randomInt];
+        return slangWord.toString();
+    }
+
+    public String getRandomSlangDefinition(String slangWord) {
+        ArrayList<String> slangDefinitions = m_slangDic.get(slangWord);
+        return slangDefinitions.get(new Random().nextInt(slangDefinitions.size()));
+    }
+
+    public void randomShowSlangWord() {
+
+        String slangWord = getRandomSlangWord();
         ArrayList<String> slangDefinitions = m_slangDic.get(slangWord);
 
         System.out.println("SLANG WORD: " + slangWord);
         System.out.println("THERE ARE " + slangDefinitions.size() + " MEANINGS OF THIS SLANG WORD");
         for (int i = 0; i < slangDefinitions.size(); i++)
             System.out.println((i + 1) + ".\t" + slangDefinitions.get(i));
+    }
+
+    //Option 09: Quiz slangWord -> slangDefinition
+    public void showQuizAnswer(ArrayList<String> listAnswer) {
+        for (int i = 0; i < listAnswer.size(); i++)
+            System.out.println((i + 1) + ".\t" + listAnswer.get(i));
+    }
+
+    public boolean checkAnswer(int correctAnswer) {
+        Scanner myReader = new Scanner(System.in);
+        System.out.print("PLEASE PRESS NUMBER OF CORRECT ANSWER: ");
+        int answer = myReader.nextInt() - 1;
+        myReader.nextLine();
+        if (answer == correctAnswer) {
+            System.out.println("CONGRATULATIONS! CORRECT ANSWER");
+            return true;
+        }
+        System.out.println("WRONG ANSWER");
+        return false;
+    }
+
+    public void showQuizSlangWord() {
+        String slangWordAnswer = getRandomSlangWord();
+        String slangDefinitionAnswer = getRandomSlangDefinition(slangWordAnswer);
+
+        ArrayList<String> listAnswer = new ArrayList<>();
+        listAnswer.add(slangDefinitionAnswer);
+        for (int i = 1; i <= 3; i++)
+            listAnswer.add(getRandomSlangDefinition(getRandomSlangWord()));
+        Collections.shuffle(listAnswer);
+
+        System.out.println("SLANG WORD: " + slangWordAnswer);
+        System.out.println("CHOOSE CORRECT ANSWER NUMBER DEFINITION");
+        showQuizAnswer(listAnswer);
+        boolean con = true;
+        while (con) {
+            boolean correct = checkAnswer(listAnswer.indexOf(slangDefinitionAnswer));
+            if (!correct) {
+                System.out.println("ARE YOU WANT ANSWER AGAIN (Y / N): ");
+                Scanner myReader = new Scanner(System.in);
+                String confirm = myReader.nextLine();
+                if (confirm.equalsIgnoreCase("y") || confirm.equalsIgnoreCase("yes"))
+                    con = true;
+                else if (confirm.equalsIgnoreCase("n") || confirm.equalsIgnoreCase("no"))
+                    con = false;
+                else System.out.println("PLEASE INPUT Y / N");
+            }
+            else con = false;
+        }
     }
 }
