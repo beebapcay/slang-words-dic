@@ -299,7 +299,7 @@ public class SlangDictionary {
             System.out.println((i + 1) + ".\t" + slangDefinitions.get(i));
     }
 
-    //Option 09: Quiz slangWord -> slangDefinition
+    //Option 09 + 10: Quiz slangWord <-> slangDefinition
     public void showQuizAnswer(ArrayList<String> listAnswer) {
         for (int i = 0; i < listAnswer.size(); i++)
             System.out.println((i + 1) + ".\t" + listAnswer.get(i));
@@ -318,22 +318,38 @@ public class SlangDictionary {
         return false;
     }
 
-    public void showQuizSlangWord() {
+    //1: slangWord -> slangDefinition
+    //2: slangDefinition -> slangWord
+    public void showQuizSlangWord(int type) {
+        if (type != 1 && type != 2) return;
+
         String slangWordAnswer = getRandomSlangWord();
         String slangDefinitionAnswer = getRandomSlangDefinition(slangWordAnswer);
 
         ArrayList<String> listAnswer = new ArrayList<>();
-        listAnswer.add(slangDefinitionAnswer);
-        for (int i = 1; i <= 3; i++)
-            listAnswer.add(getRandomSlangDefinition(getRandomSlangWord()));
+
+        if (type == 1) {
+            listAnswer.add(slangDefinitionAnswer);
+            for (int i = 1; i <= 3; i++)
+                listAnswer.add(getRandomSlangDefinition(getRandomSlangWord()));
+        }
+        else {
+            listAnswer.add(slangWordAnswer);
+            for (int i = 1; i <= 3; i++)
+                listAnswer.add(getRandomSlangWord());
+        }
         Collections.shuffle(listAnswer);
 
-        System.out.println("SLANG WORD: " + slangWordAnswer);
-        System.out.println("CHOOSE CORRECT ANSWER NUMBER DEFINITION");
+        if (type == 1)
+            System.out.println("SLANG WORD: " + slangWordAnswer + " MEAN?");
+        else System.out.println("DEFINITION: " + slangDefinitionAnswer + " FOR SLANG WORD?");
+        System.out.println("CHOOSE CORRECT ANSWER NUMBER ANSWER");
         showQuizAnswer(listAnswer);
         boolean con = true;
         while (con) {
-            boolean correct = checkAnswer(listAnswer.indexOf(slangDefinitionAnswer));
+            boolean correct;
+            if (type == 1) correct = checkAnswer(listAnswer.indexOf(slangDefinitionAnswer));
+            else correct = checkAnswer(listAnswer.indexOf(slangWordAnswer));
             if (!correct) {
                 System.out.println("ARE YOU WANT ANSWER AGAIN (Y / N): ");
                 Scanner myReader = new Scanner(System.in);

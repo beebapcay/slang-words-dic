@@ -18,7 +18,7 @@ public class AppHandling {
 //        System.out.print("Input: ");
 //        String key = myReader.next();
 
-        slangDic.showQuizSlangWord();
+        slangDic.showQuizSlangWord(2);
     }
 
 }
