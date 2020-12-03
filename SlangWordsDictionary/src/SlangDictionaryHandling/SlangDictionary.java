@@ -187,6 +187,7 @@ public class SlangDictionary {
             System.out.println("PRESS 1: TO EDIT SLANG WORD");
             System.out.println("PRESS 2: TO EDIT MEANING");
             Scanner myReader = new Scanner(System.in);
+            System.out.print("PRESS: ");
             int choose = myReader.nextInt();
             myReader.nextLine();
 
@@ -214,6 +215,7 @@ public class SlangDictionary {
                     System.out.println("PRESS 1 TO EDIT DEFINITION");
                 else System.out.println("PRESS FROM 1 TO " + slangDefinitions.size() + " TO EDIT CORRESPONDING DEFINITION");
                 System.out.println("PRESS " + (slangDefinitions.size() + 1) + " TO ADD NEW DEFINITION");
+                System.out.print("PRESS: ");
                 int num = myReader.nextInt() - 1;
                 myReader.nextLine();
 
@@ -275,6 +277,7 @@ public class SlangDictionary {
             System.out.println("PRESS 1: TO DELETE SLANG WORD");
             System.out.println("PRESS 2: TO DELETE MEANING");
             Scanner myReader = new Scanner(System.in);
+            System.out.print("PRESS: ");
             int choose = myReader.nextInt();
             myReader.nextLine();
 
@@ -299,6 +302,7 @@ public class SlangDictionary {
                 if (slangDefinitions.size() == 1)
                     System.out.println("PRESS 1 TO DELETE DEFINITION");
                 else System.out.println("PRESS FROM 1 TO " + slangDefinitions.size() + " TO DELETE CORRESPONDING DEFINITION");
+                System.out.print("PRESS: ");
                 int num = myReader.nextInt() - 1;
                 myReader.nextLine();
                 if (num < slangDefinitions.size()) {
