@@ -35,9 +35,9 @@ public class AppHandling {
     public static void main(String args[]) {
         //Setup Data File
         String resources_root = "resources/";
-        String file_data = "slang.txt";
-        String file_original  = "slang-original.txt";
-        String file_history = "history.txt";
+        String file_data = resources_root + "slang.txt";
+        String file_original  = resources_root + "slang-original.txt";
+        String file_history = resources_root + "history.txt";
 
         //Create And Load Data To SlangDictionary: slangDic
         SlangDictionary slangDic = new SlangDictionary(file_data, file_original, file_history);
